@@ -28,6 +28,9 @@
 			
 			while( $row = mysql_fetch_array($resultado, MYSQL_NUM) ) 
 			{
+				$mensaje_shell = shell_exec('cat '.$row[1]);
+				$mensaje_shell = trim(str_replace("\n","<br>",str_replace("$mensaje_shell/","",str_replace(".cfg","",$mensaje_shell))));
+				
 				echo '
 				<script>
 				$(document).ready(function(){
@@ -40,8 +43,8 @@
 				echo '<div id="titulo_proceso_'.$cont.'" style="cursor: pointer;">';
 					echo '<h1>'.$row[0].' -> '.$row[1].' -- </h1>';
 				echo '</div>';
-				echo '<div id="base_proceso">';
-					echo '<p>Stack Overflow is a question and answer site for professional and enthusiast programmers. Its 100% free, no registration required. </p>';
+				echo '<div id="base_proceso_'.$cont.'">';
+					echo '<p>'.$mensaje_shell.' </p>';
 				echo '</div>';
 				$cont++;
 			}
