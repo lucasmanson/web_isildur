@@ -5,7 +5,7 @@
 		
 		public function conectar()
 		{
-			$conexion = mysql_connect('localhost', 'lukas', 'alien123', 'test');
+			$conexion = mysql_connect('localhost', 'lukas', 'lukas', 'test');
 				if (!$conexion) { die('No pudo conectarse: ' . mysql_error()); }
 		}
 		
